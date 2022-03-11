@@ -7,6 +7,9 @@ import { Link } from 'react-router';
 import './policyscreen.css';
 import axios from 'axios';
 // import { Button } from 'bootstrap';
+import upload from '../../images/upload.png'
+import axios from 'axios';
+
 
 const PolicyScreen=props=>{
 
@@ -24,6 +27,7 @@ const PolicyScreen=props=>{
         //uploadFile(file);
     }
 
+
     function uploadFile(e) {
         e.preventDefault();
         const fileUpload=e.target.files[0];
@@ -35,6 +39,19 @@ const PolicyScreen=props=>{
           .then(res => console.log(res))
           .catch(err => console.warn(err));
     }
+
+    return(
+          
+        <div className = "policy">
+            <div className="policy_title">
+                <h1> Upload a Report</h1>
+                <img src={upload} alt=""/>
+            </div>
+            
+
+            <div className="policy_searchbar">
+                Choose a File :
+                <input className = "input-section" type="file" name="file" onChange={uploadFile}/>
 
 
     return(
