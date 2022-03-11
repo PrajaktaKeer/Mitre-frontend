@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/MITRE-frontend/node_modules
+/MITRE-frontend/.pnp
+/MITRE-frontend/.pnp.js
+
+# testing
+/MITRE-frontend/coverage
+
+# production
+/MITRE-frontend/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -7,17 +7,22 @@ import { Link } from 'react-router';
 import './policyscreen.css';
 // import { Button } from 'bootstrap';
 import upload from '../../images/upload.png'
+import axios from 'axios';
 
 const PolicyScreen=props=>{
 
-    const hiddenFileInput=React.useRef(null);
-    const handleClick=event=>{
-        hiddenFileInput.current.click();
+    function uploadFile(e) {
+        e.preventDefault();
+        const fileUpload=e.target.files[0];
+        const formData = new FormData();
+        formData.append("file", fileUpload);
+        console.log(formData)
+        axios
+          .post("http://127.0.0.1:5000/upload", formData)
+          .then(res => console.log(res))
+          .catch(err => console.warn(err));
     }
-    const handleChange=event=>{
-        const fileUpload=event.target.files[0];
-        props.handleFile(fileUpload);
-    }
+
     return(
           
         <div className = "policy">
@@ -29,8 +34,7 @@ const PolicyScreen=props=>{
 
             <div className="policy_searchbar">
                 Choose a File :
-                <input   type="file" className = "input-section" ref={hiddenFileInput} onChange={handleChange}/>
-
+                <input className = "input-section" type="file" name="file" onChange={uploadFile}/>
             </div>
 
             <h1 className = "policy_result">Search Results</h1>
