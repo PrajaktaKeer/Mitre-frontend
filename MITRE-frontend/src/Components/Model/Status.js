@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
-import './Scrapebtn.css';
+import './Status.css';
 
 function Status(){
   // const [initialData, setInitialData] = useState([{}])
