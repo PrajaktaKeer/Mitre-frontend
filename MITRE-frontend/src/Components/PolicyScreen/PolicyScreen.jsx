@@ -5,11 +5,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/fontawesome-free-solid';
 import { Link } from 'react-router';
 import './policyscreen.css';
+import axios from 'axios';
 // import { Button } from 'bootstrap';
 import upload from '../../images/upload.png'
 import axios from 'axios';
 
+
 const PolicyScreen=props=>{
+
+    // const hiddenFileInput=React.useRef(null);
+    // const handleClick=event=>{
+    //     hiddenFileInput.current.click();
+    // }
+
+    const [file, setFile] = useState();
+
+    const handleChange=event=>{
+        const fileUpload=event.target.files[0];
+        //props.handleFile(fileUpload);
+        setFile(fileUpload);
+        //uploadFile(file);
+    }
+
 
     function uploadFile(e) {
         e.preventDefault();
@@ -35,11 +52,21 @@ const PolicyScreen=props=>{
             <div className="policy_searchbar">
                 Choose a File :
                 <input className = "input-section" type="file" name="file" onChange={uploadFile}/>
+
+
+    return(
+        <div className="outer">
+             <div className = "search-section">
+             <input className = "input-section" type="file" name="file" onChange={uploadFile}/>
+                {/* <input   type="file" className = "input-section" ref={hiddenFileInput} onChange={handleChange}/> */}
+                {/* <FontAwesomeIcon  id="i" className="fas" icon={faSearch} />      */}
             </div>
 
-            <h1 className = "policy_result">Search Results</h1>
-            {/* <FontAwesomeIcon  id="i" className="fas" icon={faSearch} />      */}
-        </div> 
+            <div className = "search-results"> 
+                
+            </div>
+            
+        </div>
     );
 
 
