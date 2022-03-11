@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: services
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mitre-ui
+  namespace: services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mitre-ui
+  template:
+    metadata:
+      labels:
+        app: mitre-ui
+    spec:
+      containers:
+        - name: mitre-ui
+          image: {{image}}
+          env:
+          - name: REACT_APP_ROOT_PATH
+            value: "/mitre"
+          ports:
+            - containerPort: 80
+              name: http-80
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: services
+    meta.helm.sh/release-namespace: services
+  labels:
+    app: mitre-ui
+  name: mitre-ui
+  namespace: services
+spec:
+  ports:
+    - name: mitre-ui-http-80
+      port: 80
+      protocol: TCP
+      targetPort: http-80
+  selector:
+    app: mitre-ui
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mitre-ui
+  annotations:
+    meta.helm.sh/release-name: services
+    meta.helm.sh/release-namespace: services
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: mitre-ui
+  namespace: services
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mitre-ui
+                port:
+                  number: 80

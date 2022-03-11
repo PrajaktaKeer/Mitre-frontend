@@ -1,0 +1,21 @@
+.upper-bar{
+    position: absolute;
+    width: 1000px;
+    height: 53px;
+    left: 503px;
+    top: 90px;
+    background: #f7f3f3;
+    /*background: #EDEDED;*/
+    border-radius: 0px 56px 0px 0px;
+}
+
+.text-ring{
+    padding: 60;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+    color: #000000;
+}

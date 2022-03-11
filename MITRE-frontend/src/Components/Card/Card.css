@@ -1,0 +1,83 @@
+.outer-container {
+    background-color: transparent;
+    height: auto;
+    width : auto;
+    display: flex;
+    flex-flow: column;
+    left : 96px;
+    margin-top: 1%;
+    gap : 10px;
+    align-items: center;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.price {
+    float : right;
+    width : 70px;
+    height: 88px;
+    border-radius: 0px 8px 8px 0px;
+    text-align: center;
+    color: white;
+}
+
+.text {
+    text-align: left;
+    padding: 5px;
+    /* height: 30%; */
+}
+
+.text ul{
+    list-style-type: none;
+    padding: 0; /* Remove padding */
+    /* margin: 0; */
+}
+
+.section {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    padding-left: 10px;
+    padding-top: 8px;
+}
+
+.row1 {
+    margin-bottom: 5px;
+    padding-left: 10px;
+    color : #D41D3F;
+    cursor: pointer;
+}
+
+.desc {
+    margin-bottom: 5px;
+    padding-left: 10px;
+    height: 100px;
+}
+
+.tickets {
+    font-size: 12px;
+    text-decoration-line: underline;
+    color: #0652DD;
+    display:inline-block;
+    padding: 0px 12px;
+}
+
+.card-item {
+    background-color: white;
+    width : 89%;
+    /* left : 100px; */
+    height : auto;
+    border-radius: 8px;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25);
+}
+
+.priority {
+    float: right;
+    margin-top: 35px;
+    border-radius: 15px;
+    margin-right: 10px;
+    width : 90px;
+    /* height: 70px; */
+    text-align: center;
+    color: white;
+}
