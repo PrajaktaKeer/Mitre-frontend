@@ -1,0 +1,10 @@
+.details-container {
+    position: absolute;
+    top : 150px;
+    left: 440px;
+    width : 850px;
+    background-color: white;
+    height: 100vh;
+    align-items: center;
+    overflow-y: scroll;
+}

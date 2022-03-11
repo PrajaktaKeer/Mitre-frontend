@@ -1,0 +1,74 @@
+.outer-rect {
+    position: absolute;
+    width: 70px;
+    height: 76px;
+    left: 0px;
+    top: 0px;
+    
+    background: #FFFFFF;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 12px 12px 0px;
+    transform: rotate(90deg);
+    display: flex;
+}
+
+.top-bar {
+    position: fixed;
+    top : 0px;
+    left : 0px;
+    height: 70px;
+    width: 100%;
+}
+
+.logo-img {
+    margin: auto;
+}
+
+.logo-inner {
+    position: absolute;
+    left: 33.49%;
+    right: 35.73%;
+    top: 33.66%;
+    bottom: 42.77%;
+}
+
+.title {
+    position: absolute;
+    width: 126px;
+    height: 30px;
+    left: 96px;
+    top: 25px;
+    
+    font-family: Ambit;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 30px;
+    
+    /* identical to box height */
+    
+    color: #373737;
+}
+
+.user-greet {
+    position: absolute;
+    width: 109px;
+    height: 53px;
+    left: 257px;
+    top: 17px;
+    background: linear-gradient(93.83deg, rgba(6, 82, 221, 0.2) 1.66%, rgba(6, 82, 221, 0.116) 82.59%, rgba(131, 163, 222, 0.142) 100%);
+}
+
+.inner-text {
+    width: 48px;
+    height: 42px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    
+    color: #515151;    
+}
+
