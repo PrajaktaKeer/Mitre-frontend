@@ -1,10 +1,13 @@
 import React from 'react'
 import './Model.css'
+import Scrapebtn from './Scrapebtn'
+import Status from './Status'
 
 function Model() {
     return (
         <div className = "model">
-            Models Page. Display Model accuracy and scrapper
+            <Scrapebtn/>
+            <Status/>
         </div>
     )
 }

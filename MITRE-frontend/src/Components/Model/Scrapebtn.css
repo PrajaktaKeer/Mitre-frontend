@@ -1,0 +1,11 @@
+.scrape_button{
+    background-color:rgb(164, 124, 202);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: flex;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+  }

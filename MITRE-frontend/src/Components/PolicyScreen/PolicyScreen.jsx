@@ -8,7 +8,7 @@ import './policyscreen.css';
 import axios from 'axios';
 // import { Button } from 'bootstrap';
 import upload from '../../images/upload.png'
-import axios from 'axios';
+
 
 
 const PolicyScreen=props=>{
@@ -40,18 +40,19 @@ const PolicyScreen=props=>{
           .catch(err => console.warn(err));
     }
 
-    return(
+    // return(
           
-        <div className = "policy">
-            <div className="policy_title">
-                <h1> Upload a Report</h1>
-                <img src={upload} alt=""/>
-            </div>
+    //     <div className = "policy">
+    //         <div className="policy_title">
+    //             <h1> Upload a Report</h1>
+    //             <img src={upload} alt=""/>
+    //         </div>
             
 
-            <div className="policy_searchbar">
-                Choose a File :
-                <input className = "input-section" type="file" name="file" onChange={uploadFile}/>
+    //         <div className="policy_searchbar">
+    //             Choose a File :
+    //             <input className = "input-section" type="file" name="file" onChange={uploadFile}/>
+            
 
 
     return(
