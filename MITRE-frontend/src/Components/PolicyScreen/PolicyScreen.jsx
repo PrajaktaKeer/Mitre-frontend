@@ -20,6 +20,8 @@ const PolicyScreen=props=>{
 
     const [file, setFile] = useState();
     const [data, setData] = useState([]);
+    const [acc, setAcc] = useState();
+    const [fileFlag, setFileFlag] = useState(false);
 
     const handleChange=event=>{
         const fileUpload=event.target.files[0];
@@ -43,6 +45,17 @@ const PolicyScreen=props=>{
               console.log(res.data)
             })
           .catch(err => console.warn(err));
+        
+          axios
+          .post("http://127.0.0.1:5000/accuracy", formData)
+          .then((res) => {
+              setAcc(res.data)
+              console.log(res.data)
+              setFileFlag(true);
+            })
+          .catch(err => console.warn(err));
+
+          
     }
 
     return(
@@ -55,16 +68,22 @@ const PolicyScreen=props=>{
             
 
             <div className="policy_searchbar">
-               
                 <input className = "input-section" type="file" name="file" onChange={uploadFile}/>
+
+                {fileFlag && <p><strong>Accuracy : </strong> {acc.accuracy} &nbsp; | &nbsp;
+                <strong>Precision: </strong> {acc.precision} &nbsp; | &nbsp;
+                <strong>F1 Score : </strong> {acc.f1_score} &nbsp; | &nbsp;
+                <strong>Recall: </strong> {acc.recall}</p>} 
+                
             </div>
 
+            {fileFlag &&
             <div className="policy-table">
                 <table>
                     <tr>
-                        <th>Sentence</th>
+                        <th>Log</th>
+                        <th>Predicted ID</th>
                         <th>Actual ID</th>
-                        <th>Predict ID</th>
                     </tr>
                     {
                     data.map((val, key) => {
@@ -80,7 +99,7 @@ const PolicyScreen=props=>{
                         )
                     })}
                 </table>
-            </div>
+            </div> }
 
         </div> );
 
