@@ -50,8 +50,7 @@ function Model() {
   }
 
     return (
-        <div className = "model">
-            
+        <div className = "model">           
             <div className="live_scraping">
               <button className = "scrape_button" onClick = {startScraping}>Scrape Data</button>
               {scrapperOp && <pre> <b>Date : </b>{scrapperOp.date} <b>     Time : </b> {scrapperOp.time}</pre>
@@ -70,8 +69,6 @@ function Model() {
                     {initialData}
                   </div>
             </div>
-           
-
         </div>
     )
 }
