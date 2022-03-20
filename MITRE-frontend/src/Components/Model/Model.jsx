@@ -1,13 +1,77 @@
-import React from 'react'
+import React, { Component, useState, useEffect } from "react";
+import axios from "axios";
 import './Model.css'
-import Scrapebtn from './Scrapebtn'
-import Status from './Status'
+
 
 function Model() {
+
+    const [initialData, setInitialData] = useState(null)
+    const [scrapperOp, setscrapperOp] = useState(null)
+
+ function showScrapperHistory(){
+   axios({
+     method:"GET",
+     url: "/history",
+   })
+   .then((response) => {
+     const res = response.data
+     setInitialData(res)
+   }).catch((error) => {
+    if(error.response){
+     console.log(error.response)
+     console.log(error.response.status)
+     console.log(error.response.headers)
+    }
+  })
+  
+ }
+
+  function startScraping() {
+    axios({
+      method:"GET",
+      url: "/scrape",
+    })
+    .then((response) => {
+      const res = response.data
+      // console.log(res);
+      // setscrapperOp(res)
+      setscrapperOp(({
+        log: res.log,
+        date: res.date,
+        time: res.time
+      }))
+    }).catch((error) => {
+     if(error.response){
+      console.log(error.response)
+      console.log(error.response.status)
+      console.log(error.response.headers)
+     }
+   })
+  }
+
     return (
         <div className = "model">
-            <Scrapebtn/>
-            <Status/>
+            
+            <div className="live_scraping">
+              <button className = "scrape_button" onClick = {startScraping}>Scrape Data</button>
+              {scrapperOp && <pre> <b>Date : </b>{scrapperOp.date} <b>     Time : </b> {scrapperOp.time}</pre>
+              }
+              <div className = "scrape_output">
+                  {scrapperOp && <pre>{scrapperOp.log}</pre> }
+              </div>
+            </div>
+            
+            <div className="display_logs">
+                  <button className = "status_button" onClick={showScrapperHistory}>Show Scrapper History</button>
+                  {/* {initialData && <div className = "timestamp">
+              <h3>Data Scraped on Date: {initialData.curr_date}, Time: {initialData.curr_time}</h3>
+                  </div> */}
+                  <div className="log_output">
+                    {initialData}
+                  </div>
+            </div>
+           
+
         </div>
     )
 }
