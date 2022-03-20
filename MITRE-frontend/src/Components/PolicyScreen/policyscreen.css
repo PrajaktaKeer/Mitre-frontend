@@ -1,4 +1,5 @@
 .policy_title {
+  margin-left: 40%;
   display: flex;
 }
 
@@ -9,7 +10,7 @@
 }
 
 .policy_searchbar {
-  background-color: blue;
+  /* background-color: blue; */
   width: 100%;
   height: 50px;
   text-align: center;
@@ -19,3 +20,46 @@
 .policy_result {
   text-align: center;
 }
+
+.policy-table {
+  width: 100%;
+  height: 80vh;
+  /* height: 300px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  }
+  
+  table {
+    border: 2px solid brown;
+    width: 1400px;
+    height: 200px;
+    padding: 10px;  
+  }
+  
+  th {
+  border-bottom: 1px solid black;
+  padding: 8px;
+  }
+
+
+
+  /* tr:nth-child(even) {
+    background-color: #d5d1e0;
+  } */
+  
+  td {
+    text-align: center;
+    margin-top: 30%;
+    margin-bottom: 60;
+    padding-top: 5px;
+  }
+
+  /* p {
+    border: 1px solid brown;
+    border-radius: 10%;
+    width: 50%;
+    margin-left: 30%;
+  }
+   */
