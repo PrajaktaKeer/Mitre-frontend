@@ -1,20 +1,23 @@
 from flask import Flask
-from datetime import datetime
-date = datetime.now()
+# from datetime import datetime
+import shelve
+
+# date = datetime.now()
 
 app = Flask(__name__)
 
-@app.route('/date',methods=['GET'])
-def api():
-    return {
-        'date' : str(date.strftime("%d/%m/%y")),
-        'time': str(date.strftime("%H:%M:%S"))
-    }
-
-# @app.route('/scrape',methods=['GET'])
-# def scrape():
+# @app.route('/date',methods=['GET'])
+# def api():
 #     return {
-#         str(os.system('python3 ./Scrapper/hello.py'))
+#         'date' : str(date.strftime("%d/%m/%y")),
+#         'time': str(date.strftime("%H:%M:%S"))
 #     }
-# if __name__ == "__main__":
-#     app.run(debug=True)
+
+
+@app.route('/history', methods=['GET'])
+def api():
+
+    history = shelve.open(
+        "/home/prajakta/Mitre-frontend/MITRE-frontend/Scrapper/mitre/scrapperHistory.txt")
+
+    return str(list(history.items()))

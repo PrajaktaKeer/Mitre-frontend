@@ -8,17 +8,14 @@ function Model() {
     const [initialData, setInitialData] = useState(null)
     const [scrapperOp, setscrapperOp] = useState(null)
 
- function showtimestamp(){
+ function showScrapperHistory(){
    axios({
      method:"GET",
-     url: "/date",
+     url: "/history",
    })
    .then((response) => {
      const res = response.data
-     setInitialData(({
-       curr_date: res.date,
-       curr_time: res.time
-     }))
+     setInitialData(res)
    }).catch((error) => {
     if(error.response){
      console.log(error.response)
@@ -32,12 +29,17 @@ function Model() {
   function startScraping() {
     axios({
       method:"GET",
-      url: "http://127.0.0.1:8089/scrape",
+      url: "/scrape",
     })
     .then((response) => {
       const res = response.data
-      console.log(res);
-      setscrapperOp(res)
+      // console.log(res);
+      // setscrapperOp(res)
+      setscrapperOp(({
+        log: res.log,
+        date: res.date,
+        time: res.time
+      }))
     }).catch((error) => {
      if(error.response){
       console.log(error.response)
@@ -48,21 +50,28 @@ function Model() {
   }
 
     return (
-        <div className = "model">
+        <div className = "model">           
+            <div className="live_scraping">
+              <button className = "scrape_button" onClick = {startScraping}>Scrape Data</button>
+              {scrapperOp && <pre> <b>Date : </b>{scrapperOp.date} <b>     Time : </b> {scrapperOp.time}</pre>
+              }
+              <div className = "scrape_output">
+                  {scrapperOp && <pre>{scrapperOp.log}</pre> }
+              </div>
+            </div>
             
-            <button className = "scrape_button" onClick = {startScraping}>Scrape Data</button>
-            <div className = "scrape_output">
-                {scrapperOp}
+            <div className="display_logs">
+                  <button className = "status_button" onClick={showScrapperHistory}>Show Scrapper History</button>
+                  {/* {initialData && <div className = "timestamp">
+              <h3>Data Scraped on Date: {initialData.curr_date}, Time: {initialData.curr_time}</h3>
+                  </div> */}
+                  <div className="log_output">
+                    {initialData}
+                  </div>
             </div>
-
-            <button className = "status_button" onClick={showtimestamp}>Show TimeStamp</button>
-            {initialData && <div className = "timestamp">
-        <h3>Data Scraped on Date: {initialData.curr_date}, Time: {initialData.curr_time}</h3>
-            </div>
-        }
-
         </div>
     )
 }
 
-export default Model;
+export default Model
+
