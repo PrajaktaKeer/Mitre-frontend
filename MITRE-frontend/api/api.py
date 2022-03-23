@@ -18,6 +18,8 @@ app = Flask(__name__)
 def api():
 
     history = shelve.open(
-        "/home/prajakta/Mitre-frontend/MITRE-frontend/Scrapper/mitre/scrapperHistory.txt")
+        "../Scrapper/mitre/scrapperHistory")
 
-    return str(list(history.items()))
+    # return str(list(history.items()))
+
+    return dict(history)

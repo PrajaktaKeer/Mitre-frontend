@@ -8,6 +8,7 @@ function Model() {
     const [initialData, setInitialData] = useState(null)
     const [scrapperOp, setscrapperOp] = useState(null)
 
+
  function showScrapperHistory(){
    axios({
      method:"GET",
@@ -15,6 +16,8 @@ function Model() {
    })
    .then((response) => {
      const res = response.data
+     console.log(res)
+
      setInitialData(res)
    }).catch((error) => {
     if(error.response){
@@ -23,6 +26,8 @@ function Model() {
      console.log(error.response.headers)
     }
   })
+
+  // console.log(initialData);
   
  }
 
@@ -66,7 +71,28 @@ function Model() {
               <h3>Data Scraped on Date: {initialData.curr_date}, Time: {initialData.curr_time}</h3>
                   </div> */}
                   <div className="log_output">
-                    {initialData}
+                    {/* {initialData} */}
+
+                    <table>
+                    <tr>
+                      <th>Timestamp</th>
+                      <th>Log</th>
+                    </tr>
+
+                        {initialData && Object.entries(initialData).map(([key, value]) => (
+
+                          <tr>
+                            <td><pre>{key}</pre></td>
+                            <td><pre>{value}</pre></td>
+                          </tr>
+                        // <div> {key} : {value}</div>
+                        // <p key = {key}>
+                          
+                        // </p>
+                      ))}
+                    </table>
+
+                  
                   </div>
             </div>
         </div>

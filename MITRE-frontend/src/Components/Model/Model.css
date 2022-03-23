@@ -63,4 +63,13 @@
   width: 730px;
   background-color: white;
   padding: 10px;
+
+  overflow-y: scroll;
+}
+
+.log_output > table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
